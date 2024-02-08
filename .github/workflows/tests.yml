@@ -21,6 +21,8 @@ jobs:
         run: |
           npm ci
           npm run test
+      - name: dist
+        run: npm run dist
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
