@@ -35,6 +35,6 @@ jobs:
         run: |
           # if [ "$"]
           #echo `env | grep my_secret| base64`
-          echo `$MY_SECRET_A | base64`
+          echo `echo $MY_SECRET_B | base64`
       - name: Codecov
         uses: codecov/codecov-action@v4
