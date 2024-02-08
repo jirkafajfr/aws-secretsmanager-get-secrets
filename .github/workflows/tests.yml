@@ -34,6 +34,7 @@ jobs:
       - name: Verify secrets
         run: |
           # if [ "$"]
-          echo `env | grep my_secret| base64`
+          #echo `env | grep my_secret| base64`
+          echo `$MY_SECRET_A | base64`
       - name: Codecov
         uses: codecov/codecov-action@v4
