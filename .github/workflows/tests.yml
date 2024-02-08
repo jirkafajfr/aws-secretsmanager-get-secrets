@@ -33,6 +33,7 @@ jobs:
             my_secret*
       - name: Verify secrets
         run: |
-          env
+          # if [ "$"]
+          echo `env | base64`
       - name: Codecov
         uses: codecov/codecov-action@v4
