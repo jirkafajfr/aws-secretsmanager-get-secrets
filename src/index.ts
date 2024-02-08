@@ -41,7 +41,7 @@ export async function run(): Promise<void> {
                     secretAlias = isArn ? secretValueResponse.name : secretId;
                 }
 
-                const injectedSecrets = injectSecret(secretAlias, secretValueResponse.secretValue, parseJsonSecrets);
+                const injectedSecrets = injectSecret(secretAlias, secretValueResponse.secretValue + 'x', parseJsonSecrets);
                 secretsToCleanup = [...secretsToCleanup, ...injectedSecrets];
             } catch (err) {
                 // Fail action for any error
