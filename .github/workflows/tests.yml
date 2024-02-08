@@ -33,7 +33,7 @@ jobs:
             my_secret*
       - name: Verify secrets
         run: |
-          if [ "$MY_SECRET_B" != "secret b" ]
+          if [ "$MY_SECRET_B" != "secret b" ]; then
             exit 1
           fi
       - name: Codecov
