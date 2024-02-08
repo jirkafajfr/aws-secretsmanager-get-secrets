@@ -18,5 +18,13 @@ jobs:
         run: |
           npm ci
           npm run test
+      - name: Generate dist
+        run: |
+          npm run build
+          git config --global user.name "GitHub Actions"
+          git add dist
+          git commit --no-branch -m "Update dist"
+          export COMMIT_REF=$(git log --format=%H -n 1)
+          echo $COMMIT_REF
       - name: Codecov
         uses: codecov/codecov-action@v4
