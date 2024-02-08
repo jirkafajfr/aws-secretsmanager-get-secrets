@@ -46198,7 +46198,7 @@ function run() {
             }
             // Export the names of variables to clean up after completion
             //core.exportVariable(CLEANUP_NAME, JSON.stringify(secretsToCleanup));
-            core.info("Completed adding secrets.");
+            core.info("Completed adding secrets from modified version.");
         }
         catch (error) {
             if (error instanceof Error)
