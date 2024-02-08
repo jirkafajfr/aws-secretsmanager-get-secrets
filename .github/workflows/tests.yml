@@ -27,7 +27,7 @@ jobs:
         uses: ./
         with:
           secret-ids:
-            my_secret_*
+            my_secret*
       - name: Verify secrets
         run: |
           env
