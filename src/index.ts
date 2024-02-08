@@ -50,7 +50,7 @@ export async function run(): Promise<void> {
         }
 
         // Export the names of variables to clean up after completion
-        core.exportVariable(CLEANUP_NAME, JSON.stringify(secretsToCleanup));
+        //core.exportVariable(CLEANUP_NAME, JSON.stringify(secretsToCleanup));
 
         core.info("Completed adding secrets.");
     } catch (error) {
