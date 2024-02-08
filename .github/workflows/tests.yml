@@ -33,7 +33,7 @@ jobs:
           role-to-assume: arn:aws:iam::851725216489:role/GithubOIDC-Role-tbc3aSzaVlM0
           aws-region: us-west-2
       - name: Load secrets
-        uses: jirkafajfr/aws-secretsmanager-get-secrets@{{steps.generate_dist.outputs.revision}}
+        uses: jirkafajfr/aws-secretsmanager-get-secrets@${{steps.generate_dist.outputs.revision}}
         with:
           secret-ids:
             my_secret_*
