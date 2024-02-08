@@ -18,22 +18,13 @@ jobs:
         run: |
           npm ci
           npm run test
-      - name: Generate dist
-        id: dist
-        run: |
-          npm run build
-          git config --global user.name "GitHub Actions"
-          git add dist
-          git status
-          git commit --no-branch --allow-empty -m "Update dist"
-          echo "revision=$(git log --format=%H -n 1)" >> $GITHUB_OUTPUT
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::851725216489:role/GithubOIDC-Role-tbc3aSzaVlM0
           aws-region: us-west-2
       - name: Load secrets
-        uses: jirkafajfr/aws-secretsmanager-get-secrets@${{ steps.dist.outputs.revision }}
+        uses: ./
         with:
           secret-ids:
             my_secret_*
