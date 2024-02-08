@@ -46163,7 +46163,6 @@ exports.run = void 0;
 const core = __importStar(__nccwpck_require__(42186));
 const client_secrets_manager_1 = __nccwpck_require__(39600);
 const utils_1 = __nccwpck_require__(71314);
-const constants_1 = __nccwpck_require__(69042);
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -46198,7 +46197,7 @@ function run() {
                 }
             }
             // Export the names of variables to clean up after completion
-            core.exportVariable(constants_1.CLEANUP_NAME, JSON.stringify(secretsToCleanup));
+            //core.exportVariable(CLEANUP_NAME, JSON.stringify(secretsToCleanup));
             core.info("Completed adding secrets.");
         }
         catch (error) {
