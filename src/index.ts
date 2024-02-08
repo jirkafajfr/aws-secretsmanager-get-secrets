@@ -41,8 +41,8 @@ export async function run(): Promise<void> {
                     secretAlias = isArn ? secretValueResponse.name : secretId;
                 }
 
-                //const injectedSecrets = injectSecret(secretAlias, secretValueResponse.secretValue, parseJsonSecrets);
-                //secretsToCleanup = [...secretsToCleanup, ...injectedSecrets];
+                const injectedSecrets = injectSecret(secretAlias, secretValueResponse.secretValue, parseJsonSecrets);
+                secretsToCleanup = [...secretsToCleanup, ...injectedSecrets];
             } catch (err) {
                 // Fail action for any error
                 core.setFailed(`Failed to fetch secret: '${secretId}'. Error: ${err}.`)
@@ -50,7 +50,7 @@ export async function run(): Promise<void> {
         }
 
         // Export the names of variables to clean up after completion
-        //core.exportVariable(CLEANUP_NAME, JSON.stringify(secretsToCleanup));
+        core.exportVariable(CLEANUP_NAME, JSON.stringify(secretsToCleanup));
 
         core.info("Completed adding secrets from modified version.");
     } catch (error) {
