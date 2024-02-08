@@ -24,7 +24,7 @@ jobs:
           git config --global user.name "GitHub Actions"
           git add dist
           git status
-          git commit --no-branch -m "Update dist"
+          git commit --no-branch --allow-empty -m "Update dist"
           export COMMIT_REF=$(git log --format=%H -n 1)
           echo $COMMIT_REF
       - name: Codecov
