@@ -19,13 +19,26 @@ jobs:
           npm ci
           npm run test
       - name: Generate dist
+        id: generate_dist
         run: |
           npm run build
           git config --global user.name "GitHub Actions"
           git add dist
           git status
           git commit --no-branch --allow-empty -m "Update dist"
-          export COMMIT_REF=$(git log --format=%H -n 1)
-          echo $COMMIT_REF
+          echo "::set-output name=revision::$(git log --format=%H -n 1)"
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::851725216489:role/GithubOIDC-Role-tbc3aSzaVlM0
+          aws-region: us-west-2
+      - name: Load secrets
+        uses: jirkafajfr/aws-secretsmanager-get-secrets@{{steps.generate_dist.outputs.revision}}
+        with:
+          secret-ids:
+            my_secret_*
+      - name: Verify secrets
+        run: |
+          env
       - name: Codecov
         uses: codecov/codecov-action@v4
