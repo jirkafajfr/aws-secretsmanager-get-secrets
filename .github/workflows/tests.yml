@@ -35,7 +35,7 @@ jobs:
       - name: Verify secrets
         run: |
           if [ "$MYTESTSECRET2" != "MyTestSecret2" ]; then
-            exit 1
+            exit 1 
           fi
       - name: Codecov
         uses: codecov/codecov-action@v4
