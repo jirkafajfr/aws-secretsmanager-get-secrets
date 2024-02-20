@@ -31,9 +31,7 @@ jobs:
       - name: Load secrets
         uses: ./
         with:
-          secret-ids:
-            MyTestSecret2
-            MyTestSecret*
+          secret-ids: MyTestSecret*
       - name: Verify secrets
         run: |
           if [ "$MYTESTSECRET2" != "MyTestSecret2" ]; then
