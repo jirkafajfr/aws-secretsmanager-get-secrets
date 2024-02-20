@@ -32,7 +32,7 @@ jobs:
         uses: ./
         with:
           secret-ids:
-            MyTestSecret2*
+            MyTestSecret2
       - name: Verify secrets
         run: |
           if [ "$MyTestSecret2" != "MyTestSecret2" ]; then
