@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
-      contents: read    
+      contents: read
     name: Run unit tests
     steps:
       - name: Checkout
@@ -26,16 +26,15 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::851725216489:role/GithubOIDC-Role-tbc3aSzaVlM0
-          aws-region: us-west-2
+          role-to-assume: arn:aws:iam::654654453185:role/GithubActionsRole
       - name: Load secrets
         uses: ./
         with:
           secret-ids:
-            my_secret*
+            MyTestSecret2*
       - name: Verify secrets
         run: |
-          if [ "$MY_SECRET_B" != "secret b" ]; then
+          if [ "$MyTestSecret2" != "MyTestSecret2" ]; then
             exit 1
           fi
       - name: Codecov
