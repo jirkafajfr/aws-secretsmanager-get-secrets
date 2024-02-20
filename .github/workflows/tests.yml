@@ -33,9 +33,10 @@ jobs:
         with:
           secret-ids:
             MyTestSecret2
+            MyTestSecret*
       - name: Verify secrets
         run: |
-          if [ "$MyTestSecret2" != "MyTestSecret2" ]; then
+          if [ "$MYTESTSECRET2" != "MyTestSecret2" ]; then
             exit 1
           fi
       - name: Codecov
