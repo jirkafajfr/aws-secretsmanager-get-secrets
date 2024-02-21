@@ -31,7 +31,12 @@ jobs:
       - name: Integration Tests Act
         uses: ./
         with:
-          secret-ids: MyTestSecret*
+          secret-ids: |
+            SampleSecret1
+            SampleSecret1_alias, SampleSecret1
+            /special/chars/secret
+            0/special/chars/secret
+            PrefixSecret*
       - name: Integration Tests Assert
         run: npm run integration-test
       - name: Codecov

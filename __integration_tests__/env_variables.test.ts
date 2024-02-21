@@ -1,6 +1,7 @@
 describe('Environment Variables Test', () => {
     it.each([
         ['SAMPLESECRET', 'SomeSampleSecret1'],
+        ['SAMPLESECRET1_ALIAS', 'SomeSampleSecret1'],
         ['_SPECIAL_CHARS_SECRET', 'SomeSampleSecret2'],
         ['_0_SPECIAL_CHARS_SECRET', 'SomeSampleSecret3'],
         ['PREFIXSECRET1', 'PrefixSecret1Value'],
