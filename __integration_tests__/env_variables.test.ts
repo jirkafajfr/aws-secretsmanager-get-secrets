@@ -6,9 +6,11 @@ describe('Environment Variables Assert', () => {
         ['_0_SPECIAL_CHARS_SECRET', 'SomeSampleSecret3'],
         ['PREFIXSECRET1', 'PrefixSecret1Value'],
         ['PREFIXSECRET2', 'PrefixSecret2Value'],
+        ['JSONSECRET_API_USER', 'user'],
+        ['JSONSECRET_API_KEY', 'key'],
+        ['JSONSECRET_CONFIG_ACTIVE', 'true'],
     ])('Secret with name %s test', (secretName, expectedValue) => {
-        const secretValue = process.env[secretName]
-        expect(secretValue).toBeDefined();
+        const secretValue = process.env[secretName];
         expect(secretValue).toBe(expectedValue);
     });
 });
