@@ -27,7 +27,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::654654453185:role/GithubActionsRole
-          #role-to-assume: arn:aws:iam::339713045997:role/GithubActionsRole
+          #role-to-assume: arn:aws:iam::339713045997:role/GithubActionsRole 
           aws-region: us-east-1
       - name: Integration Tests Act
         uses: ./
