@@ -28,14 +28,11 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::654654453185:role/GithubActionsRole
           aws-region: us-east-1
-      - name: Load secrets
+      - name: Integration Tests Act
         uses: ./
         with:
           secret-ids: MyTestSecret*
-      - name: Verify secrets
-        run: |
-          if [ "$MYTESTSECRET2" != "MyTestSecret2" ]; then
-            exit 1   
-          fi
+      - name: Integration Tests Assert
+        run: npm run integration-test
       - name: Codecov
         uses: codecov/codecov-action@v4
