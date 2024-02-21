@@ -1,6 +1,6 @@
-describe('Environment Variables Test', () => {
+describe('Environment Variables Assert', () => {
     it.each([
-        ['SAMPLESECRET', 'SomeSampleSecret1'],
+        ['SAMPLESECRET1', 'SomeSampleSecret1'],
         ['SAMPLESECRET1_ALIAS', 'SomeSampleSecret1'],
         ['_SPECIAL_CHARS_SECRET', 'SomeSampleSecret2'],
         ['_0_SPECIAL_CHARS_SECRET', 'SomeSampleSecret3'],
@@ -8,6 +8,7 @@ describe('Environment Variables Test', () => {
         ['PREFIXSECRET2', 'PrefixSecret2Value'],
     ])('Secret with name %s test', (secretName, expectedValue) => {
         const secretValue = process.env[secretName]
+        expect(secretValue).toBeDefined();
         expect(secretValue).toBe(expectedValue);
     });
 });
