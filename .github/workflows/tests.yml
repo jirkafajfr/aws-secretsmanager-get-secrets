@@ -33,7 +33,7 @@ jobs:
         with:
           secret-ids: |
             SampleSecret1
-            SampleSecret1_alias, SampleSecret1
+            SAMPLESECRET1_ALIAS, SampleSecret1
             /special/chars/secret
             0/special/chars/secret
             PrefixSecret*
