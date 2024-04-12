@@ -1,0 +1,13 @@
+name: Checkout and Build
+on:
+  - workflow_call
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: npm ci
+      - name: Build the dist folder
+        run: npm run build

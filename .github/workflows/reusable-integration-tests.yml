@@ -1,0 +1,37 @@
+name: Reusable Integration Tests
+on:
+  workflow_call:
+    inputs:
+      secret-ids:
+        required: true
+        type: string
+      parse-json-secrets:
+        required: false
+        type: string
+      name-transformation:
+        required: false
+        type: string
+jobs:
+  name-transformation-test:
+    runs-on: ubuntu-latest
+    name: Run ${{ inputs.name-transformation }} transformation integration tests
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: npm ci
+      - name: Build the dist folder
+        run: npm run build
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::654654453185:role/GithubActionsRole
+          aws-region: us-east-1
+      - name: Act
+        uses: ./
+        with:
+          name-transformation: ${{ inputs.name-transformation }}
+          secret-ids: ${{ inputs.secret-ids }}
+          parse-json-secrets: ${{ inputs.parse-json-secrets}}
+      - name: Assert
+        run: npm run integration-test __integration_tests__/name_transformation/${{ inputs.name-transformation }}.test.ts
