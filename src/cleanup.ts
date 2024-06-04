@@ -2,6 +2,7 @@ import * as core from '@actions/core'
 import { CLEANUP_NAME } from "./constants";
 import { cleanVariable } from "./utils";
 
+// Some trivial change
 
 /**
  * When the GitHub Actions job is done, clean up any environment variables that
