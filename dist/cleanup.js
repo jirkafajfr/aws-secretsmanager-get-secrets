@@ -36,6 +36,7 @@ exports.cleanup = void 0;
 const core = __importStar(require("@actions/core"));
 const constants_1 = require("./constants");
 const utils_1 = require("./utils");
+// some change
 /**
  * When the GitHub Actions job is done, clean up any environment variables that
  * may have been set by the job (https://github.com/aws-actions/configure-aws-credentials/blob/master/cleanup.js)
