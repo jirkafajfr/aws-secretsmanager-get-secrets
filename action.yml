@@ -20,5 +20,3 @@ runs:
   using: 'node20'
   main: 'dist/index.js'
   post: 'dist/cleanup/index.js'
-  env:
-    NODE_OPTIONS: "--network-family-autoselection-attempt-timeout=1000"
